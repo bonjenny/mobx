@@ -1,4 +1,4 @@
-const { autorun, observable, action } = require('mobx');
+const { autorun, observable, reaction, runInAction } = require('mobx');
 
 const state = observable({
   compA: 'a',
@@ -10,6 +10,12 @@ autorun(() => {
   console.log('changed!');
 });
 
+reaction(() => {
+  return state.compB;
+}, () => {
+  console.log('compB changed!', state.compB);
+})
+
 runInAction(() => {
   state.compA = 'c';
   state.compB = 'c';
@@ -20,15 +26,15 @@ runInAction(() => {
   state.compC = 'd';
 })
 
-class UserStore {
-  @observable name = 'zero';
-  @observable age = 26;
-  @observable married = false;
+// class UserStore {
+//   @observable name = 'zero';
+//   @observable age = 26;
+//   @observable married = false;
 
-  @action
-  changeName(value) {
-    this.name = value;
-  }
-}
+//   @action
+//   changeName(value) {
+//     this.name = value;
+//   }
+// }
 
 state.compA = 'b';

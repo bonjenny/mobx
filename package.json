@@ -1,5 +1,24 @@
 {
+  "scripts": {
+    "start": "babel-node index.js",
+    "decorator": "babel-node user_store_decorator.js",
+    "legacy-decorator": "babel-node user_store_legacy_decorator.js",
+    "ts-decorator": "ts-node user_store_decorator.ts",
+    "build": "babel index.js -o dist/index.js",
+    "dev": "babel-node index.js --watch"
+  },
   "dependencies": {
     "mobx": "^6.13.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.4",
+    "@babel/node": "^7.27.1",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.27.1",
+    "@babel/plugin-transform-class-properties": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }

@@ -6,10 +6,12 @@ const state = observable({
   compC: null,
 });
 
+// autorun: 뭐가 바뀌든 바뀌기만 하면 실행됨
 autorun(() => {
   console.log('changed!');
 });
 
+// reaction: expression에 
 reaction(() => {
   return state.compB;
 }, () => {
